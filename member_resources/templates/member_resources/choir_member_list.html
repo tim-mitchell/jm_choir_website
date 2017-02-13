@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Choir Parts</title>
+</head>
+<p><h1>List of Choir Parts</h1></p>
+<body>
+{% if choir_member_list %}
+    <ul>
+    {% for choir_member in choir_member_list %}
+        <li><a href="{% url 'member_resources:choir_member' choir_member.id %}">{{ choir_member.name}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No parts are available.</p>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{choir_member.name}}</title>
+</head>
+<body>
+<h1>{{choir_member.name}}</h1>
+<h2>Audio Files></h2>
+<table>
+    <tr><th>Song</th><th>Arranged Part</th><th>Version</th><th>Resource Type</th><th>filename</th></tr>
+    {% for song_part_recording in song_part_recording_list %}
+        <tr>
+            <td>{{ song_part_recording.song_part.song.name}}</td>
+            <td>{{ song_part_recording.song_part.part.name}}</td>
+            <td>{{ song_part_recording.version.name}}</td>
+            <td>{{ song_part_recording.filename}}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% if not song_part_resource_list %}
+    <p>No resources are available.</p>
+{% endif %}
+
+<h2>Scores</h2>
+<table>
+    <tr><th>Song</th><th>Arranged Part</th><th>filename</th></tr>
+    {% for song_part in song_part_list %}
+        <tr>
+            <td>{{song_part.song.name}}</td>
+            <td>{{song_part.part.name}}</td>
+            <td>{{song_part.score_filename}}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% if not song_part_list %}
+    <p>No scores are available.</p>
+{% endif %}
+
+</body>
+</html>

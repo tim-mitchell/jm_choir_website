@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{song.name}}</title>
+</head>
+<body>
+<h1>{{song.name}}</h1>
+<h2>Scores</h2>
+<table>
+    <tr><th>Part</th><th>Filename</th></tr>
+    {% for song_part in song.songpart_set.all %}
+        {% if song_part.score_filename %}
+            <tr>
+                <td>{{song_part.part.name}}</td>
+                <td>{{song_part.score_filename}}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+
+</body>
+</html>
